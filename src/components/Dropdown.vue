@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+    import { ref } from 'vue';
 
-const props = defineProps(['data','label','context']);
-const emit = defineEmits(['change'])
-const selectedOption = ref(props.data[0].label);
+    const props = defineProps(['data','label','context']);
+    const emit = defineEmits(['change']);
+    const selectedOption = ref(props.data[0].label);
 
-//this method will call when any option change in dropdown
-const handleChange=()=>emit('change',selectedOption,props.context);
+    //this method will call when any option change in dropdown
+    const handleChange=()=>emit('change',selectedOption,props.context);
 
 </script>
 

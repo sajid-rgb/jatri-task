@@ -1,9 +1,9 @@
 <script setup>
-const props = defineProps(['item','index','productId','currentPage']);
-const emit = defineEmits(['get-product','empty-product']);
+    const props = defineProps(['item','index','productId','currentPage']);
+    const emit = defineEmits(['get-product','empty-product']);
 
-//this is dynamic serial no. this serial no will not changed when sorting.
-const getSerialNo = () => (props.currentPage - 1)*5+ props.index + 1;
+    //this is dynamic serial no. this serial no will not changed when sorting.
+    const getSerialNo = () => (props.currentPage - 1)*5+ props.index + 1;
 
 </script>
 <template>

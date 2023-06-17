@@ -1,34 +1,37 @@
 <script setup>
-import { computed,ref } from 'vue';
-import { tableData } from '../helpers/uiData';
-import ProductRow from './ProductRow.vue';
-import ProductDetails from './ProductDetails.vue';
+    import { computed,ref } from 'vue';
+    import { tableData } from '../helpers/uiData';
+    import ProductRow from './ProductRow.vue';
+    import ProductDetails from './ProductDetails.vue';
 
-const props = defineProps(['data','selectedOption','product','currentPage'])
-const product = ref({});
+    const props = defineProps(['data','selectedOption','product','currentPage']);
+    const product = ref({});
 
-//this method used  for sorted ascending/descending order when sort button changed
-const sortedData = computed(() =>{
-    if(props.selectedOption.name === 'Ascending'){
-        return props.data.sort((prev, next) => prev[props.selectedOption.key] - next[props.selectedOption.key])
-    } else  if(props.selectedOption.name === 'Descending'){
-        return props.data.sort((prev, next) => next[props.selectedOption.key] - prev[props.selectedOption.key])
-    } else {
-        return props.data;
-    }
-} );
+    //this method used  for sorted ascending/descending order when sort button changed
+    const sortedData = computed(() =>{
+        if(props.selectedOption.name === 'Ascending'){
+            return props.data.sort((prev, next) => prev[props.selectedOption.key] - next[props.selectedOption.key]);
+        } else  if(props.selectedOption.name === 'Descending'){
+            return props.data.sort((prev, next) => next[props.selectedOption.key] - prev[props.selectedOption.key]);
+        } else {
+            return props.data;
+        }
+    } );
 
-//this method get all single product and set it to product variable
-const handleGetProduct = (id) => {
-    fetch(`https://dummyjson.com/products/${id}`)
-    .then(response => response.json())
-    .then(result=> {
-        product.value = result;
-    })
-}
+    //this method get all single product and set it to product variable
+    const handleGetProduct = (id) => {
+        fetch(`https://dummyjson.com/products/${id}`)
+        .then(response => response.json())
+        .then(result=> {
+            product.value = result;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    };
 
-//this method is used for clearing data after close button clicked
-const handleEmptyProduct = () => product.value = {};
+    //this method is used for clearing data after close button clicked
+    const handleEmptyProduct = () => product.value = {};
 
 </script>
 <template>

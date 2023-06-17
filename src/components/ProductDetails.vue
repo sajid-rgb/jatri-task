@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['product','itemId'])
+    const props = defineProps(['product','itemId']);
 </script>
 <template>
     <tr class="details-row" v-if="props.product.id && props.product.id === props.itemId">

@@ -24,13 +24,13 @@
     const handleNextPage = () => {
         currentPage.value += 1;
         skip.value = (currentPage.value-1)*5;
-    }
+    };
 
     //this method will call when user click previous button in pagination
     const handlePrevPage = () => {
         currentPage.value -= 1;
         skip.value = (currentPage.value-1)*5;
-    }
+    };
 
     //this method gets all products data from api
     const getData = (key) => {
@@ -45,17 +45,17 @@
         .catch(err => {
             console.log(err);
         })
-    }
+    };
     
     //when skip change api will call, this watch used for it.
     watch(skip, ()=> {
         getData('')
-    })
+    });
 
     //we use it for first time api calling
     onMounted(() => {
         getData('initial')
-    })
+    });
 
 </script>
 

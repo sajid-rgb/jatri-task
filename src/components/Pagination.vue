@@ -1,11 +1,11 @@
 <script setup>
-import { computed } from 'vue';
-const props = defineProps(['total','skip','currentPage']);
-const emit = defineEmits(['on-click','next-page','prev-page']);
-const itemsPerPage = 5;
+    import { computed } from 'vue';
+    const props = defineProps(['total','skip','currentPage']);
+    const emit = defineEmits(['on-click','next-page','prev-page']);
+    const itemsPerPage = 5;
 
-//it calculates the total pages for pagination
-const totalPages = computed(() => Math.ceil(props.total / itemsPerPage));
+    //it calculates the total pages for pagination
+    const totalPages = computed(() => Math.ceil(props.total / itemsPerPage));
 
 </script>
 <template>
